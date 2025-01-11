@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.App-header {
+  background-color: #282524;
+  padding: 20px;
+  color: white;
+}
+
+.auth-container {
+  display: flex;
+}
+.sign-out-button {
+  margin: 20px;
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #087bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-out-button:hover {
+  background-color: #085b53;
+}
