@@ -4,6 +4,18 @@ import { Amplify } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
+import Home from './components/home/Home'
+import Layout from './components/Layout'
+import NoPage from './components/NoPage'
+
+// import Accounts from './components/Accounts'
+import Accounts from './components/accounts/Accounts'
+
+
+
+import AboutUs from './components/AboutUs'
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+
 
 Amplify.configure(awsExports);
 
@@ -14,22 +26,20 @@ function App() {
         <Authenticator>
           {({ signOut }) => (
             <div className="auth-container">
-              <header className="App-header">
-                <h1>Welcome to My App</h1>
-              </header>
-              <main>
-              <p>You are logged in!</p>
-              <button
-                onClick={signOut}
-                className="sign-out-button"
-              >
-                Log Out
-              </button>
-            </main>
+              <BrowserRouter>
+                <Routes>
+                  <Route path='/' element={<Layout signOut={signOut}/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path='/aboutUs' element={<AboutUs/>}/>
+                    <Route path='/accounts' element={<Accounts/>}/>
+                    <Route path='*' element={<NoPage/>}/>
+                  </Route>
+                </Routes>
+              </BrowserRouter>
             </div>)}
-            </Authenticator>
-            </div>
-            </div>
+          </Authenticator>
+        </div>
+      </div>
   );
 }
 export default App
